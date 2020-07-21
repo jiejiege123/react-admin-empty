@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Col, Dropdown, Menu, Row } from 'antd';
 import React, { Component, Suspense } from 'react';
@@ -42,19 +43,19 @@ class Home extends Component {
     clearTimeout(this.timeoutId);
   }
 
-  handleChangeSalesType = e => {
+  handleChangeSalesType = (e) => {
     this.setState({
       salesType: e.target.value,
     });
   };
 
-  handleTabChange = key => {
+  handleTabChange = (key) => {
     this.setState({
       currentTabKey: key,
     });
   };
 
-  handleRangePickerChange = rangePickerValue => {
+  handleRangePickerChange = (rangePickerValue) => {
     const { dispatch } = this.props;
     this.setState({
       rangePickerValue,
@@ -64,7 +65,7 @@ class Home extends Component {
     });
   };
 
-  selectDate = type => {
+  selectDate = (type) => {
     const { dispatch } = this.props;
     this.setState({
       rangePickerValue: getTimeDistance(type),
@@ -74,7 +75,7 @@ class Home extends Component {
     });
   };
 
-  isActive = type => {
+  isActive = (type) => {
     const { rangePickerValue } = this.state;
 
     if (!rangePickerValue) {
