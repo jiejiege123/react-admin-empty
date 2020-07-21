@@ -1,8 +1,20 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-21 08:37:52
+ * @LastEditTime: 2020-07-21 16:29:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \bpsp-uie:\doit\react\demo\react-admin-empty\src\locales\zh-CN\menu.js
+ */
+
 export default {
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.首页': '首页',
+  'menu.content.banner': '轮播图管理',
+  'menu.content.notice': '公告管理',
+  'menu.content': '内容管理',
   'menu.admin': '管理页',
   'menu.admin.sub-page': '二级管理页',
   'menu.login': '登录',

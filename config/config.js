@@ -49,10 +49,29 @@ export default defineConfig({
               redirect: '/home',
             },
             {
-              name: '首页',
+              name: 'home',
               icon: 'smile',
               path: '/home',
               component: './Home',
+            },
+            {
+              name: 'content',
+              icon: 'database',
+              path: '/content',
+              routes: [
+                {
+                  name: 'notice',
+                  icon: 'smile',
+                  path: '/content/notice',
+                  component: './Content/Notice',
+                },
+                {
+                  name: 'banner',
+                  icon: 'smile',
+                  path: '/content/banner',
+                  component: './Content/Banner',
+                },
+              ],
             },
             // {
             //   path: '/welcome',
@@ -82,7 +101,6 @@ export default defineConfig({
             //   path: '/list',
             //   component: './ListTableList',
             // },
-
             {
               component: './404',
             },
