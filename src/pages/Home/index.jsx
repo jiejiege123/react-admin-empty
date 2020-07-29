@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import { EllipsisOutlined } from '@ant-design/icons';
-import { Col, Dropdown, Menu, Row } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons'; // 图标
+import { Col, Dropdown, Menu, Row } from 'antd'; // UI
 import React, { Component, Suspense } from 'react';
-import { GridContent } from '@ant-design/pro-layout';
-import { connect } from 'umi';
-import PageLoading from './components/PageLoading';
+import { GridContent } from '@ant-design/pro-layout'; // 布局的一种
+import { connect } from 'umi'; // 数据处理的一种
+import PageLoading from './components/PageLoading'; 
 import { getTimeDistance } from './utils/utils';
 import styles from './style.less';
 
@@ -15,21 +15,26 @@ const ProportionSales = React.lazy(() => import('./components/ProportionSales'))
 const OfflineData = React.lazy(() => import('./components/OfflineData'));
 
 class Home extends Component {
-  state = {
+  state = { // 相当于 vue data
     salesType: 'all',
     currentTabKey: '',
     rangePickerValue: getTimeDistance('year'),
   };
 
-  reqRef = 0;
+  reqRef = 0; // 理解为静态属性 不参与 state
 
-  timeoutId = 0;
+  timeoutId = 0; // 同上
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    this.reqRef = requestAnimationFrame(() => {
+    const { dispatch } = this.props; // 类似于 vuex 的 this.$store.dispatch 方法, 用于改变状态管理的state值 
+    this.reqRef = requestAnimationFrame(() => { // requestAnimationFrame 暂时不管, web内部方法
       dispatch({
         type: 'home/fetch',
+        // payload: {
+        //   opacityTop: 'none',
+        //   hiddenDivDisplay: 'none',// 控制隐藏头部的display
+        //   footerDisplay: 'none' 
+        // }
       });
     });
   }
@@ -43,8 +48,8 @@ class Home extends Component {
     clearTimeout(this.timeoutId);
   }
 
-  handleChangeSalesType = (e) => {
-    this.setState({
+  handleChangeSalesType = (e) => { // 实验性语法 不影响
+    this.setState({ // 改变 this.state 中的某个属性值
       salesType: e.target.value,
     });
   };
@@ -197,7 +202,7 @@ class Home extends Component {
   }
 }
 
-export default connect(({ home, loading }) => ({
+export default connect(({ home, loading }) => ({ // 通过这种方式来把model层的数据传递到当前组件了，默认这面的也是home属性，通过this.props.home可以获取到model.js中state的数据了 
   home,
   loading: loading.effects['home/fetch'],
 }))(Home);
