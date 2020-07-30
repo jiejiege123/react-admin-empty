@@ -71,7 +71,7 @@ class Home extends Component {
   };
 
   selectDate = (type) => {
-    const { dispatch } = this.props;
+    const { dispatch } = this.props
     this.setState({
       rangePickerValue: getTimeDistance(type),
     });
@@ -204,5 +204,5 @@ class Home extends Component {
 
 export default connect(({ home, loading }) => ({ // 通过这种方式来把model层的数据传递到当前组件了，默认这面的也是home属性，通过this.props.home可以获取到model.js中state的数据了 
   home,
-  loading: loading.effects['home/fetch'],
+  loading: loading.effects['home/fetch'], // loading.effects['home/fetch'] 用于判断当前异步加载是否完成 加载时为true 完成时为false 相当于是统一的做了这个时 就很好了
 }))(Home);
