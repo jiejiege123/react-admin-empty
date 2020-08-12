@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { EllipsisOutlined } from '@ant-design/icons'; // 图标
 import { Col, Dropdown, Menu, Row } from 'antd'; // UI
-import React, { Component, Suspense } from 'react';
+import React, { Component, Suspense } from 'react'; // Suspense React.lazy 延迟加载包裹的组件 fallback：被包裹的组件渲染完成之前显示的内容
 import { GridContent } from '@ant-design/pro-layout'; // 布局的一种
 import { connect } from 'umi'; // 数据处理的一种
 import PageLoading from './components/PageLoading'; 
@@ -77,7 +77,7 @@ class Home extends Component {
     });
     dispatch({
       type: 'home/fetchSalesData',
-    });
+    })
   };
 
   isActive = (type) => {
@@ -205,4 +205,4 @@ class Home extends Component {
 export default connect(({ home, loading }) => ({ // 通过这种方式来把model层的数据传递到当前组件了，默认这面的也是home属性，通过this.props.home可以获取到model.js中state的数据了 
   home,
   loading: loading.effects['home/fetch'], // loading.effects['home/fetch'] 用于判断当前异步加载是否完成 加载时为true 完成时为false 相当于是统一的做了这个时 就很好了
-}))(Home);
+}))(Home)
