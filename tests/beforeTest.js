@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-21 08:37:52
+ * @LastEditTime: 2020-08-26 14:09:28
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \bpsp-uie:\doit\react\demo\react-admin-empty\tests\beforeTest.js
+ */
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
 const { execSync } = require('child_process');
