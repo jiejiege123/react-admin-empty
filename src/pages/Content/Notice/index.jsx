@@ -188,8 +188,9 @@ const TableList = () => {
         headerTitle="查询c表格"
         actionRef={actionRef}
         rowKey="key"
+        // search={false} // 搜索框
         // options={false} // 工具栏 { fullScreen: true, reload:true, setting: true}
-        toolBarRender={(action, { selectedRows }) => [
+        toolBarRender={(action, { selectedRows }) => [ // 自定义工具栏
           <Button icon={<PlusOutlined />} type="primary" onClick={() => handleModalVisible(true)}>
             新建
           </Button>,
