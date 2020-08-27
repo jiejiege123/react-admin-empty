@@ -8,8 +8,9 @@ import UpdateForm from './components/UpdateForm';
 import { queryRule, updateRule, addRule, removeRule } from './service';
 
 // useState
-// const [somestate, somesetState] = useState(init);
+// const [somestate, somesetState] = useState(init); 等价于this.setState({})
 // somestate: 某个state(更新的最新值), somesetState: 改变state的函数, init: state的初始值
+// somesetState的参数： 可以是一个用于改变somestate的式子
 
 // useReducer useState的升级版本
 
@@ -184,9 +185,10 @@ const TableList = () => {
   return (
     <PageHeaderWrapper>
       <ProTable
-        headerTitle="查询表格"
+        headerTitle="查询c表格"
         actionRef={actionRef}
         rowKey="key"
+        // options={false} // 工具栏 { fullScreen: true, reload:true, setting: true}
         toolBarRender={(action, { selectedRows }) => [
           <Button icon={<PlusOutlined />} type="primary" onClick={() => handleModalVisible(true)}>
             新建
