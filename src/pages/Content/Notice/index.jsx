@@ -1,6 +1,6 @@
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { Button, Divider, Dropdown, Menu, message, Input } from 'antd';
-import { DownOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Divider, message, Input } from 'antd';
+// import { DownOutlined, PlusOutlined } from '@ant-design/icons';
 import ProTable from '@ant-design/pro-table';
 import React, { useState, useRef } from 'react';
 import CreateForm from './components/CreateForm';
@@ -21,7 +21,7 @@ import { queryRule, updateRule, addRule, removeRule } from './service';
 // 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内保持不变。
 
 // import { Spin } from 'antd';
-// import styles from './index.less';
+import styles from './index.less';
 
 /**
  * 添加节点
@@ -185,54 +185,26 @@ const TableList = () => {
   return (
     <PageHeaderWrapper>
       <ProTable
-        headerTitle="查询c表格"
+        className={styles.proTable}
+        // headerTitle="查询c表格"
         actionRef={actionRef}
         rowKey="key"
         // search={false} // 搜索框
-        // options={false} // 工具栏 { fullScreen: true, reload:true, setting: true}
-        toolBarRender={(action, { selectedRows }) => [ // 自定义工具栏
-          <Button icon={<PlusOutlined />} type="primary" onClick={() => handleModalVisible(true)}>
-            新建
+        options={false} // 工具栏 { fullScreen: true, reload:true, setting: true}
+        toolBarRender={(action, { selectedRows }) => [
+          // 自定义工具栏
+          <Button type="primary" onClick={() => handleModalVisible(true)}>
+            发布消息
           </Button>,
-          selectedRows && selectedRows.length > 0 && (
-            <Dropdown
-              overlay={
-                <Menu
-                  onClick={async (e) => {
-                    if (e.key === 'remove') {
-                      await handleRemove(selectedRows);
-                      action.reload();
-                    }
-                  }}
-                  selectedKeys={[]}
-                >
-                  <Menu.Item key="remove">批量删除</Menu.Item>
-                  <Menu.Item key="approval">批量审批</Menu.Item>
-                </Menu>
-              }
-            >
-              <Button>
-                批量操作 <DownOutlined />
-              </Button>
-            </Dropdown>
-          ),
+          <Button
+            danger
+            disabled={selectedRows.length < 1}
+            onClick={() => handleRemove(selectedRows)}
+          >
+            批量删除
+          </Button>,
         ]}
-        tableAlertRender={({ selectedRowKeys, selectedRows }) => (
-          <div>
-            已选择{' '}
-            <a
-              style={{
-                fontWeight: 600,
-              }}
-            >
-              {selectedRowKeys.length}
-            </a>{' '}
-            项&nbsp;&nbsp;
-            <span>
-              服务调用次数总计 {selectedRows.reduce((pre, item) => pre + item.callNo, 0)} 万
-            </span>
-          </div>
-        )}
+        tableAlertRender={false}
         request={(params) => queryRule(params)}
         columns={columns}
         rowSelection={{}}
