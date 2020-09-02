@@ -98,52 +98,52 @@ const TableList = () => {
   const columns = [
     // 表格
     {
-      title: '规则名称',
+      title: '标题',
       dataIndex: 'name',
       rules: [
         {
           required: true,
-          message: '规则名称为必填项',
+          message: '标题为必填项',
         },
       ],
     },
     {
-      title: '描述',
+      title: '内容',
       dataIndex: 'desc',
       valueType: 'textarea',
     },
+    // {
+    //   title: '服务调用次数',
+    //   dataIndex: 'callNo',
+    //   sorter: true,
+    //   hideInForm: true,
+    //   renderText: (val) => `${val} 万`,
+    // },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
-      sorter: true,
-      hideInForm: true,
-      renderText: (val) => `${val} 万`,
-    },
-    {
-      title: '状态',
+      title: '范围',
       dataIndex: 'status',
       hideInForm: true,
       valueEnum: {
         0: {
-          text: '关闭',
-          status: 'Default',
+          text: '内部分享',
+          // status: 'Default',
         },
         1: {
-          text: '运行中',
-          status: 'Processing',
+          text: '小程序',
+          // status: 'Processing',
         },
         2: {
-          text: '已上线',
-          status: 'Success',
+          text: 'App',
+          // status: 'Success',
         },
         3: {
           text: '异常',
-          status: 'Error',
+          // status: 'Error',
         },
       },
     },
     {
-      title: '上次调度时间',
+      title: '更新时间',
       dataIndex: 'updatedAt',
       sorter: true,
       valueType: 'dateTime',
@@ -161,6 +161,10 @@ const TableList = () => {
 
         return defaultRender(item);
       },
+    },
+    {
+      title: '创建人',
+      dataIndex: 'creacter',
     },
     {
       title: '操作',
